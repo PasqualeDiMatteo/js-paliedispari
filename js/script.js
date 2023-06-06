@@ -39,3 +39,53 @@ palindromeBtn.addEventListener("click", function () {
 
   palindromeResult.innerHTML = message;
 });
+
+// -------------------- Pari Dispari --------------------------
+
+const evenElement = document.querySelector("#even input");
+const evenBtn = document.querySelector("#even button");
+const evenResult = document.getElementById("even-result");
+const selectElement = document.getElementById("select-input");
+
+// Creiamo le funzioni
+
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max + 1 - min)) + min;
+}
+
+function isEven(number) {
+  return !(number % 2);
+}
+
+// Event Listener
+
+evenBtn.addEventListener("click", function () {
+  const userNumber = parseInt(evenElement.value);
+
+  const userChoice = selectElement.value;
+
+  const cpuNumber = randomNumber(1, 5);
+
+  //  Sommiamo i due numeri
+
+  const sum = userNumber + cpuNumber;
+
+  const resultEven = isEven(sum);
+
+  // Controllo
+
+  let result = "Ha vinto la CPU !";
+
+  if (
+    (resultEven && userChoice === "even") ||
+    (!resultEven && userChoice === "odd")
+  ) {
+    result = "Ha vinto l'utente !";
+  }
+
+  //   Stampo il messaggio
+
+  const message = `${result} Numero della CPU:${cpuNumber}`;
+
+  evenResult.innerHTML = message;
+});
