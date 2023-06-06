@@ -57,10 +57,23 @@ function isEven(number) {
   return !(number % 2);
 }
 
+function validation(number) {
+  return isNaN(number) || number < 1 || number > 5;
+}
+
 // Event Listener
 
 evenBtn.addEventListener("click", function () {
   const userNumber = parseInt(evenElement.value);
+
+  // Validazione
+
+  const isInvalid = validation(userNumber);
+
+  if (isInvalid) {
+    evenResult.innerText = "Devi inserire un numero valido da 1 a 5!!";
+    return;
+  }
 
   const userChoice = selectElement.value;
 
